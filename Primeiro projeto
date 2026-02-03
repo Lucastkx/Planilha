@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Médicos e Exames</title>
+    <style>
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+ 
+  background-color: rgb(118, 128, 118);
+  background-position: center center; /* centraliza horizontal e vertical */
+  background-size: cover;             /* preenche a tela sem distorcer */
+  background-repeat: no-repeat;       /* não repete */
+  min-height: 100vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Título */
+h2 {
+  background-color: rgb(38, 196, 38);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+}
+
+/* Select */
+select {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: green;
+}
+
+/* Tabela */
+table {
+  border-collapse: collapse;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: green;
+  color: white;
+}
+
+/* Linhas alternadas */
+tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
+
+/* Infos */
+#informacoes,
+#medico,#Preparos {
+  color: rgb(35, 160, 44);
+  font-weight: bold;
+  margin-top: 10px;
+ 
+  
+}
+
+    </style>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Médicos e Exames</title>
+
+
+</head>
+
+<body>
+
+<h2>Selecione uma opção</h2>
+
+<select id="informacoes">
+    <option value="">-- Info --</option>
+    <option value="info">Informações</option>
+    <option value="ramais">Ramais</option>
+</select>
+
+<select id="Preparos">
+    <option value="">-- Preparos --</option>
+    <option value="preparo">Tomografia e Ressonância</option>
+    <option value="usg">USG Abd Total e Superior</option>
+</select>
+
+<select id="medico">
+    <option value="">-- Médico --</option>
+    <option value="paulo">Dr. Paulo</option>
+    <option value="erika">Dra. Erika</option>
+    <option value="simone">Dra. Simone</option>
+    <option value="anapaula">Dra. Ana Paula</option>
+    <option value="carlos">Dr. Carlos Maciel</option>
+</select>
+
+<table>
+<thead>
+<tr>
+    <th>#</th>
+    <th>Procedimento / Informação</th>
+</tr>
+</thead>
+<tbody id="exames"></tbody>
+</table>
+
+<script>
+// ================== DADOS ==================
+const dados = {
+   paulo: [
+        "Abd total e superior","Adrenais","Aparelho urinário","Bolsa escrotal","Bolsa escrotal c/ doppler",
+        "Fossa Ilíaca","Fossa/Região Poplítea","Glândulas Salivares","Mamas","Paratireoide",
+        "Parede abdominal","Parade abdominal c/ doppler","Parotidas","Pélvica","Pélvica c/ doppler",
+        "Pescoço","Pescoço c/ doppler","Próstata Abdominal","Região Cervical","Região Cervical c/ doppler",
+        "Região Dorsal","Região Glútea","Região Inguinal","Região Lombar","Região Submandibular",
+        "Região Supra Clavicular","Tireóide","Tireóide c/ doppler","Torax","Transvaginal",
+        "Transvaginal c/ doppler","Partes moles"
+    ],
+erika: [
+        "Abd total e superior","Aparelho urinário","Articulação ME","Carótidas e vértebras","Controle de ovolução",
+        "Doppler MMII Venoso","Fossa Ilíaca","Fossa/Região Poplítea","Glândulas Salivares","Mamas",
+        "Obstétrica simples ou gemelar","Paratireoide","Parede abdominal","Parade abdominal c/ doppler",
+        "Parotidas","Pélvica","Pélvica c/ doppler","Pescoço","Pescoço c/ doppler","Próstata Abdominal",
+        "Região Auricular","Região Cervical","Região Cervical c/ doppler","Região Dorsal","Região Glútea",
+        "Região Inguinal","Região Lombar","Região Submandibular","Região Supra Clavicular","Tireóide",
+        "Tireóide c/ doppler","Torax","Transvaginal","Transvaginal c/ doppler","Virilha","Ombros",
+        "Punhos","Tornozelo","Joelhos","Partes moles"
+],
+simone: [
+        "Abd total e superior","Adrenais","Aparelho urinário","Articulação ME","Bolsa escrotal",
+        "Bolsa escrotal c/ doppler","Carótidas e vértebras","Controle de ovolução","Craniana",
+        "Fossa Ilíaca","Fossa/Região Poplítea","Mamas","Paratireoide","Parede abdominal",
+        "Parade abdominal c/ doppler","Parotidas","Pélvica","Pélvica c/ doppler","Pescoço",
+        "Pescoço c/ doppler","Próstata Abdominal","Próstata Abdominal c/ doppler","Região Auricular",
+        "Região Cervical","Região Cervical c/ doppler","Região Dorsal","Região Glútea","Região Inguinal",
+        "Região Lombar","Região Perineal","Região Submandibular","Região Supra Clavicular","Tireóide",
+        "Tireóide c/ doppler","Torax","Transvaginal","Transvaginal c/ doppler","Virilha","Ombros",
+        "Joelhos","Pé","Mãos","Punhos","Couro cabeludo","Partes moles","Tornozelo","Cotovelos","Panturrilha"
+    ],
+anapaula: [
+        "Abd total e superior","Aorta ilíaca c/ doppler","Aparelho urinário","Articulação ME","Bolsa escrotal",
+        "Bolsa escrotal c/ doppler","Carótidas e vertebrais","Controle de ovolução","Craniana",
+        "Fossa Ilíaca","Fossa/Região Poplítea","Glândulas Salivares","Mamas","Paratireoide","Parotidas",
+        "Pélvica","Pélvica c/ doppler","Pescoço","Pescoço c/ doppler","Próstata Abdominal","Região Auricular",
+        "Região Cervical","Região Cervical c/ doppler","Região Dorsal","Região Glútea","Região Lombar",
+        "Região Submandibular","Região Supra Clavicular","Sistema Porta c/ doppler","Tireóide","Tireóide c/ doppler",
+        "Torax","Transvaginal","Transvaginal c/ doppler","Virilha","Ombros","Punhos","Couro Cabeludo",
+        "Partes moles","Pés","Dedos","Mãos","Cotovelo","Joelho"
+    ],
+
+
+};
+
+const informacoes = [
+`CNPJs:
+Derby: 00.000.000/0000-00
+Rui Barbosa: 00.000.000/0000-00
+`,
+
+`Contato:
+Telefone: (81) 0000 - 0000
+WhatsApp: (81) 90000-0000`
+];
+
+const ramais = [
+"7345 - ",
+"7311 - ",
+"7315 - ",
+"7326 - "
+];
+
+const preparos = {
+    preparo: [
+`Tomografia / Ressonância:
+• Jejum de 6 horas
+• Trazer exames anteriores
+• Retirar objetos metálicos`
+    ],
+    usg: [
+`USG Abd Total e Superior:<p>
+• Jejum de 6 horas
+• Tomar 2 comprimidos ou 60 gotas de Luftal na noite anterior ao exame (antes de deitar);
+• Trazer exames anteriores, se houver, no dia do exame.`
+    ]
+};
+
+// ================== FUNÇÃO ==================
+const tabela = document.getElementById("exames");
+
+function preencherTabela(lista) {
+    tabela.innerHTML = "";
+    lista.forEach((item, i) => {
+        tabela.innerHTML += `
+        <tr>
+            <td>${i + 1}</td>
+            <td style="white-space: pre-wrap;">${item}</td>
+        </tr>`;
+    });
+}
+
+// ================== SELECTS ==================
+const selectMedico = document.getElementById("medico");
+const selectInfo = document.getElementById("informacoes");
+const selectPreparos = document.getElementById("Preparos");
+
+selectMedico.addEventListener("change", () => {
+    selectInfo.value = "";
+    selectPreparos.value = "";
+    preencherTabela(dados[selectMedico.value] || []);
+});
+
+selectInfo.addEventListener("change", () => {
+    selectMedico.value = "";
+    selectPreparos.value = "";
+    if (selectInfo.value === "info") preencherTabela(informacoes);
+    else if (selectInfo.value === "ramais") preencherTabela(ramais);
+    else tabela.innerHTML = "";
+});
+
+selectPreparos.addEventListener("change", () => {
+    selectMedico.value = "";
+    selectInfo.value = "";
+    preencherTabela(preparos[selectPreparos.value] || []);
+});
+</script>
+
+</body>
+</html>
+
+
+</script>
+
+</body>
+</html>

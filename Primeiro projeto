@@ -7,15 +7,12 @@
 /* Reset básico */
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
+/* BODY */
 body {
- 
-  background-color: rgb(118, 128, 118);
-  background-position: center center; /* centraliza horizontal e vertical */
-  background-size: cover;             /* preenche a tela sem distorcer */
-  background-repeat: no-repeat;       /* não repete */
+ background: linear-gradient(135deg, #f4f6f8, #e6eaee);
   min-height: 100vh;
   margin: 0;
 
@@ -25,66 +22,95 @@ body {
   justify-content: center;
 }
 
-/* Título */
+/* TÍTULO */
 h2 {
-  background-color: rgb(38, 196, 38);
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
   color: #fff;
-  border-radius: 8px;
-  padding: 10px 16px;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Select */
+/* SELECT */
 select {
-  margin-bottom: 15px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #999;
-  font-size: 15px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #4caf50;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  background-color: #f4fff8;
+  transition: all 0.25s ease;
+}
+
+select:hover {
+  background-color: #e8fff1;
 }
 
 select:focus {
   outline: none;
-  border-color: green;
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.35);
 }
 
-/* Tabela */
+/* TABELA */
 table {
   border-collapse: collapse;
-  margin-top: 15px;
+  margin-top: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   background-color: #fff;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  border-radius: 6px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  border-radius: 10px;
   overflow: hidden;
+  animation: fadeIn 0.4s ease;
 }
 
 th, td {
-  padding: 10px;
+  padding: 12px;
   text-align: left;
 }
 
 th {
-  background-color: green;
-  color: white;
+  background-color: #2ecc71;
+  color: #fff;
+  font-weight: 600;
 }
 
-/* Linhas alternadas */
+/* LINHAS */
 tr:nth-child(even) td {
-  background-color: #f2f2f2;
+  background-color: #f6fdf9;
 }
 
-/* Infos */
-#informacoes,
-#medico,#Preparos {
-  color: rgb(35, 160, 44);
-  font-weight: bold;
-  margin-top: 10px;
- 
-  
+tr:hover td {
+  background-color: #e9f8ef;
 }
+
+/* SELECTS (IDS) */
+#informacoes,
+#medico,
+#Preparos,
+#Autorizacao,
+#Valores {
+  color: #0f8adb;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* CONTEINER (mantendo sua estrutura) */
+conteiner {
+  border: 2px solid #2ecc71;
+  border-radius: 12px;
+  background-color: #44b635;
+  padding: 12px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+
 
     </style>
 </head>
@@ -102,11 +128,12 @@ tr:nth-child(even) td {
 <body>
 
 <h2>Selecione uma opção</h2>
-
+<conteiner>
 <select id="informacoes">
     <option value="">-- Info --</option>
     <option value="info">Informações</option>
     <option value="ramais">Ramais</option>
+    
 </select>
 
 <select id="Preparos">
@@ -115,6 +142,17 @@ tr:nth-child(even) td {
     <option value="usg">USG Abd Total e Superior</option>
 </select>
 
+<select id="Autorizacao">
+    <option value="">-- AutPrévia --</option>
+    <option value="liberacao">Planos de saude</option>
+</select>
+<select id="Valores">
+  <option value="Valor">-- Valores --</option>
+  <option value="ultrassom">Ultrassom</option>
+  <option value="ressonancia">Ressonancia</option>
+  <option value="tomografia">Tomografia</option>
+</select>
+ 
 <select id="medico">
     <option value="">-- Médico --</option>
     <option value="paulo">Dr. Paulo</option>
@@ -123,11 +161,11 @@ tr:nth-child(even) td {
     <option value="anapaula">Dra. Ana Paula</option>
     <option value="carlos">Dr. Carlos Maciel</option>
 </select>
-
+</conteiner>
 <table>
 <thead>
-<tr>
-    <th>#</th>
+<tr>  
+    <th></th>
     <th>Procedimento / Informação</th>
 </tr>
 </thead>
@@ -178,25 +216,24 @@ anapaula: [
         "Partes moles","Pés","Dedos","Mãos","Cotovelo","Joelho"
     ],
 
-
 };
 
 const informacoes = [
 `CNPJs:
-Derby: 00.000.000/0000-00
-Rui Barbosa: 00.000.000/0000-00
-`,
+Derby: 11.933.822/0001-41
+Rui Barbosa: 11.933.822/0002-22
+Site: www.institutojoserocha.com.br`,
 
 `Contato:
-Telefone: (81) 0000 - 0000
-WhatsApp: (81) 90000-0000`
+Telefone: (81) 3125-7300
+WhatsApp: (81) 99878-0039`
 ];
 
 const ramais = [
-"7345 - ",
-"7311 - ",
-"7315 - ",
-"7326 - "
+"7345 - Roberta (Gerente)",
+"7311 - Ana Carla",
+"7315 - Eduardo",
+"7326 - Recepção"
 ];
 
 const preparos = {
@@ -214,6 +251,293 @@ const preparos = {
     ]
 };
 
+const autorizacao = {
+  planos: [
+    {
+      nome: "Aires Saúde",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "Vem autorizado"
+    },
+    {
+      nome: "Amep",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Amil",
+      usg_rx_densi: "Na hora (verificar o tipo)",
+      rm_tc: "RM fica / TC na hora (verificar tipo)",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Assefaz",
+      usg_rx_densi: "Autorização prévia",
+      rm_tc: "Autorização prévia",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Banco Central",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Bradesco",
+      usg_rx_densi: "Na hora (verificar o tipo)",
+      rm_tc: "Na hora (HD ou CID na guia / Não faz TC)",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Camed Saúde",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Capesesp",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Cassi",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "Autorização prévia"
+    },
+    {
+      nome: "Clinical Center (apenas Instituto)",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "NÃO ATENDE"
+    },
+    {
+      nome: "Comsaúde",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "Vem autorizado"
+    },
+    {
+      nome: "Exemed",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "-"
+    },
+    {
+      nome: "Fachesf",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "-"
+    },
+    {
+      nome: "Fisco Saúde",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "-"
+    },
+    {
+      nome: "Fox Saúde",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "-"
+    },
+    {
+      nome: "Funcef Saúde Caixa",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Autorização prévia",
+      cemupe: "-"
+    },
+    {
+      nome: "Geap",
+      usg_rx_densi: "Na hora*",
+      rm_tc: "Autorização prévia",
+      cemupe: "-"
+    },
+    {
+      nome: "Hapvida",
+      usg_rx_densi: "Extra e rede credenciada: autorização na hora",
+      rm_tc: "Vem autorizado",
+      cemupe: "-"
+    },
+    {
+      nome: "Iassepe (IPSEP)",
+      usg_rx_densi: "Autorização prévia",
+      rm_tc: "RM vem autorizada / TC protocolo ou já autorizado",
+      cemupe: "-"
+    },
+    {
+      nome: "Unimed",
+      usg_rx_densi: "Na hora",
+      rm_tc: "Recife na hora, demais vêm autorizados",
+      cemupe: "-"
+    },
+    {
+      nome: "REDE RECIFE",
+      usg_rx_densi: "Vem autorizado",
+      rm_tc: "Vem autorizado",
+      cemupe: "NÃO ATENDE"
+    }
+  ]
+};
+const valor = {
+     ultrassom:[
+"ABDOMEN SUPERIOR (FIG/V.B./VESIC/PANC/BACO) ULTRASSOM $165.00",
+"ABDOMEN TOTAL (ABD.SUP/RINS/RETROPERIT/BEX.) ULTRASSOM $220.00",
+"APARELHO URINARIO (RINS E BEXIGA) MASCULINO ULTRASSOM $120.00",
+"APARELHO URINARIO FEMININO (RINS E BEXIGA) ULTRASSOM $120.00",
+"ARTICULACOES (OMBROS, PUNHOS, JOELHOS, PERNAS, BACIA) ULTRASSOM $120.00",
+"CRANIANA ULTRASSOM $150.00",
+"CRANIANA COM DOPPLER COLORIDO ULTRASSOM $220.00",
+"DOPPLER MMII VENOSO (POR MEMBRO) ULTRASSOM $195.00",
+"DOPPLER MMII ARTERIAL (POR MEMBRO) ULTRASSOM $195.00",
+"CAROTIDAS E VERTEBRAIS ULTRASSOM $230.00",
+"AORTA E ILIACA ULTRASSOM $310.00",
+"TRANSNUCENCIA ULTRASSOM $165.00",
+"PAROTIDAS ULTRASSOM $185.00",
+"PÊNIS C/ DOPPLER + EREÇÃO ULTRASSOM $560.00",
+"MAMOTOMIA GUIADA POR USG ULTRASSOM $3,500.00",
+"MORFOLOGICO FETAL ULTRASSOM $170.00",
+"OBSTETRICA ULTRASSOM $130.00",
+"OBSTETRICA COM DOPPLER COLORIDO ULTRASSOM $220.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS (MUSCULOS, TENDOES..) ULTRASSOM $120.00",
+"PELVICA (GINECOLOGICA) ULTRASSOM $125.00",
+"PELVICA (TRANSVAGINAL) ULTRASSOM $180.00",
+"PESQUISA DE ENDOMETRIOSE TRANSVAGINAL (MISAEL) ULTRASSOM $410.00",
+"PROSTATA VIA ABDOMINAL ULTRASSOM $110.00",
+"PROSTATA VIA TRANS-RETAL ULTRASSOM $160.00",
+"TORAX (EXTRA CARDIACO) ULTRASSOM $150.00",
+"ULTRASON MAMARIA COM DOPPLER ULTRASSOM $220.00",
+"ULTRASON MAMARIA ULTRASSOM $200.00",
+"USG AXILIAR ULTRASSOM $120.00",
+"BOLSA SEM DOPPLER ULTRASSOM $130.00",
+"BOLSA COM DOPPLER ULTRASSOM $175.00",
+"APARELHO URINARIO (RINS E BEXIGA) FEMININO COM DOPPLER COLORIDO ULTRASSOM $240.00",
+"ABDOMEN TOTAL (ABD.SUP/RINS/RETROPERIT/BEX.) COM DOPPLER COLORIDO ULTRASSOM $355.00",
+"APARELHO URINARIO (RINS E BEXIGA) MASCULINO COM DOPPLER COLORIDO ULTRASSOM $240.00",
+"ARTICULACOES (OMBROS, PUNHOS, JOELHOS, PERNAS, BACIA) COM DOPPLER COLORIDO ULTRASSOM $220.00",
+"MORFOLOGICO FETAL COM DOPPLER COLORIDO ULTRASSOM $250.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS (MUSCULOS, TENDOES..) COM DOPPLER COLORIDO ULTRASSOM $230.00",
+"PELVICA (GINECOLOGICA) COM DOPPLER COLORIDO ULTRASSOM $220.00",
+"PELVICA (TRANSVAGINAL) COM DOPPLER COLORIDO ULTRASSOM $220.00",
+"USG TIREOIDE COM DOPPLER ULTRASSOM $210.00",
+"ABDOME SUPERIOR (FIG/V.B./VESIC/PANC/BACO) COM DOPPLER COLORIDO ULTRASSOM $265.00",
+"DOPPLER COLOR E VASOS CERVICAIS (CAROT/VERT) ULTRASSOM $230.00",
+"ELASTOGRAFIA HEPATICA ULTRASSÔNICA ULTRASSOM $510.00",
+"USG DE TIREÓIDE ULTRASSOM $110.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS (MUSCULOS, TENDOES) – DRA ISABEL ULTRASSOM $100.00",
+"ULTRASON MAMARIA – DRA ISABEL ULTRASSOM $120.00",
+"USG ARTICULAR (COTOVELO) ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS AXILAS ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS CERVICAL ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS PAREDE ABDOMINAL ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS BOLSA ESCROTAL ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS PARATIREOIDE ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS DORSAL ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS LOMBAR ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS REGIAO SUBMANDIBULAR ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS GLANDULAS SALIVARES ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS PAROTIDAS ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS REGIAO INGUINAL ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS SUPRA CLAVICULAR ULTRASSOM $120.00",
+"USG ARTICULAR (OMBRO) ULTRASSOM $120.00",
+"USG ARTICULAR (PUNHO) ULTRASSOM $120.00",
+"USG ARTICULAR (MAO) ULTRASSOM $120.00",
+"USG ARTICULAR (JOELHO) ULTRASSOM $120.00",
+"USG ARTICULAR (QUADRIL) ULTRASSOM $120.00",
+"USG ARTICULAR (TORNOZELO) ULTRASSOM $120.00",
+"USG ARTICULAR (PE) ULTRASSOM $120.00",
+"USG ARTICULAR (PERNA) ULTRASSOM $120.00",
+"USG ARTICULAR (BACIA) ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS MUSCULO ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS TENDAO ULTRASSOM $120.00",
+"USG ARTICULAR (DEDO) ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS PENIS ULTRASSOM $120.00",
+"ORGAOS ESTRUTURAS SUPERFICIAIS PAREDE ABDOMINAL (HERNIA UMBILICAL) ULTRASSOM $120.00"
+
+     ],
+     tomografia:[
+"TOMOGRAFIA COMPUTADORIZADA DO PESCOCO COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA DO PESCOCO TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTAD. DA COLUNA COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTAD. DA PELVE OU BACIA COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTAD. DA PELVE OU BACIA TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTAD. DE MASTOIDES/OUVIDO COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTAD. DO ABDOMEN SUPERIOR COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA CEREBRAL COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA DE ARTICULACAO COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA DE MEMBROS COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA DE MEMBROS TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTADORIZADA DINAMICA COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA DO ABDOME TOTAL TOMOGRAFIA $750.00",
+"TOMOGRAFIA COMPUTADORIZADA DO TORAX COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTADORIZADA DO ABDOME TOTAL COM CONTRASTE TOMOGRAFIA $896.00",
+"TOMOGRAFIA COMPUTAD. DA COLUNA TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTAD. DO ABDOMEN SUPERIOR TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTADORIZADA DE ARTICULACAO TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTADORIZADA CEREBRAL TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTADORIZADA DA FACE TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTADORIZADA DA FACE COM CONTRASTE TOMOGRAFIA $702.00",
+"TOMOGRAFIA COMPUTAD. DE MASTOIDES/OUVIDO TOMOGRAFIA $440.00",
+"TOMOGRAFIA COMPUTADORIZADA DO TORAX TOMOGRAFIA $440.00"
+     ],
+     ressonancia:[
+     "ANGIOGRAFIA POR RM (POR SEGMENTO) RESSONANCIA $680.00",
+"ANGIOGRAFIA POR RM (POR SEGMENTO) COM CONTRASTE RESSONANCIA $950.00",
+"ARTRORESSONANCIA RESSONANCIA $1,150.00",
+"ESPECTROSCOPIA RESSONANCIA $385.00",
+"RM DE MAMA COM CONTRASTE RESSONANCIA $1,274.00",
+"RM DE MAMA RESSONANCIA $961.00",
+"RM DA COLUNA CERVICAL COM CONTRASTE RESSONANCIA $950.00",
+"RM DA COLUNA CERVICAL RESSONANCIA $680.00",
+"RM DA COLUNA LOMBO-SACRA RESSONANCIA $680.00",
+"RM DA COLUNA LOMBO-SACRA COM CONTRASTE RESSONANCIA $950.00",
+"RM DA COLUNA TORAXICA RESSONANCIA $680.00",
+"RM DA COLUNA TORAXICA COM CONTRASTE RESSONANCIA $950.00",
+"RM DE ABDOMEN SUPERIOR COM CONTRASTE RESSONANCIA $950.00",
+"RM DE ATM (BILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RM DE BACIA OU PELVIS COM CONTRASTE RESSONANCIA $950.00",
+"RM DE PROSTATA COM CONTRASTE RESSONANCIA $950.00",
+"RM DE CORACAO OU AORTA COM CINE-RM RESSONANCIA $805.00",
+"RM DE CORACAO OU AORTA COM CINE-RM COM CONTRASTE RESSONANCIA $1,150.00",
+"RM DE COTOVELO OU PUNHO (UNILATERAL) RESSONANCIA $680.00",
+"RM DE COTOVELO OU PUNHO (UNILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RM DE COXO-FEMURAL (BILATERAL) RESSONANCIA $680.00",
+"RM DE COXO-FEMURAL (BILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RM DE CRANIO COM CONTRASTE RESSONANCIA $950.00",
+"RM DE JOELHO (UNILATERAL) RESSONANCIA $680.00",
+"RM DE JOELHO (UNILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RM DE OMBRO (UNILATERAL) RESSONANCIA $680.00",
+"RM DE OMBRO (UNILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RM DE PESCOCO COM CONTRASTE RESSONANCIA $950.00",
+"RM DE PLEXO BRAQUIAL RESSONANCIA $680.00",
+"RM DE PLEXO BRAQUIAL COM CONTRASTE RESSONANCIA $950.00",
+"RM DE SEGMENTO APENDICULAR (UNILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RM DE TORAX COM CONTRASTE RESSONANCIA $950.00",
+"RM DE TORNOZELO OU PE (UNILATERAL) COM CONTRASTE RESSONANCIA $950.00",
+"RESSONANCIA DO ABDOME TOTAL RESSONANCIA $1,015.00",
+"RESSONANCIA DO ABDOME TOTAL COM CONTRASTE RESSONANCIA $1,127.00",
+"RM DE CRANIO RESSONANCIA $680.00",
+"RM DE PESCOCO RESSONANCIA $680.00",
+"RM DE TORAX RESSONANCIA $680.00",
+"RM DE ABDOMEN SUPERIOR RESSONANCIA $680.00",
+"RM DE ATM (BILATERAL) RESSONANCIA $680.00",
+"RM DE TORNOZELO OU PE (UNILATERAL) RESSONANCIA $680.00",
+"RM DE PROSTATA RESSONANCIA $680.00",
+"RM DE BACIA OU PELVIS RESSONANCIA $680.00",
+"RM DE SEGMENTO APENDICULAR (UNILATERAL) RESSONANCIA $680.00",
+"RM ARTICULAÇÃO (POR ARTICULAÇÃO) RESSONANCIA $680.00",
+"RM MULTIPARAMETRICA DE PROSTATA RESSONANCIA $1,127.00"
+     
+     
+     ],
+
+
+
+}
+
+
 // ================== FUNÇÃO ==================
 const tabela = document.getElementById("exames");
 
@@ -227,11 +551,34 @@ function preencherTabela(lista) {
         </tr>`;
     });
 }
+function preencherTabelaAutorizacao(lista) {
+    tabela.innerHTML = `
+      <tr>
+        <th>Convênio</th>
+        <th>USG / RX / Densi</th>
+        <th>RM / TC</th>
+        <th>Cemupe</th>
+      </tr>
+    `;
+
+    lista.forEach(plano => {
+        tabela.innerHTML += `
+          <tr>
+            <td>${plano.nome}</td>
+            <td>${plano.usg_rx_densi}</td>
+            <td>${plano.rm_tc}</td>
+            <td>${plano.cemupe}</td>
+          </tr>
+        `;
+    });
+}
 
 // ================== SELECTS ==================
 const selectMedico = document.getElementById("medico");
 const selectInfo = document.getElementById("informacoes");
 const selectPreparos = document.getElementById("Preparos");
+const selectAutorizacao = document.getElementById("Autorizacao");
+const selectValores = document.getElementById("Valores")
 
 selectMedico.addEventListener("change", () => {
     selectInfo.value = "";
@@ -252,6 +599,26 @@ selectPreparos.addEventListener("change", () => {
     selectInfo.value = "";
     preencherTabela(preparos[selectPreparos.value] || []);
 });
+selectAutorizacao.addEventListener("change", () => {
+    selectMedico.value = "";
+    selectInfo.value = "";
+    selectPreparos.value = "";
+
+    if (selectAutorizacao.value === "liberacao") {
+        preencherTabelaAutorizacao(autorizacao.planos);
+    } else {
+        tabela.innerHTML = "";
+    }
+});
+selectValores.addEventListener("change", () => {
+    selectMedico.value = "";
+    selectInfo.value = "";
+    selectPreparos.value = "";
+    selectAutorizacao.value = "";
+    preencherTabela(valor[selectValores.value] || []);
+
+});
+
 </script>
 
 </body>

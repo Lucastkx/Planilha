@@ -1,0 +1,125 @@
+* {
+  gap: 10px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+}
+.ramal,.derby{
+  justify-content: center;
+  
+  
+  
+}
+#pesquisa{
+  padding: 8px;
+  height: 30px;
+  font-size: 15px ;
+  border-radius: 5px;
+  color: #2f3b30;
+  border: #44b635;
+}
+div{
+  margin-bottom: 12px;
+  padding: 14px 14px;
+  border-radius: 10px;
+  border: 1px solid #4caf50;
+  background-color: #44c573;
+}
+
+body {
+  
+background: linear-gradient(135deg, #1f7a6b, #cfdce4);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+select {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #4caf50;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #f4fff8;
+  transition: all 0.25s ease;
+}
+
+select:hover {
+  background-color: #e8fff1;
+}
+
+select:focus {
+  outline: none;
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 2px rgba(10, 211, 94, 0.35);
+}
+
+/* TABELA */
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 900px;
+  /*max-width: 650px;*/
+  background-color: #ffffff;
+  box-shadow: 0 8px 18px rgba(99, 92, 92, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #2ecc71;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* LINHAS */
+tr:nth-child(even) td {
+  background-color: hsl(146, 64%, 98%);
+}
+/*Quando o cursor passa por cima da linha */
+tr:hover td {
+  background-color: #d0eedc;
+}
+
+
+#informacoes,
+#medico,
+#Preparos,
+#Autorizacao,
+#Valores,
+#aceitamos {
+  color: #0a98f7;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+
+conteiner {
+  border: 2px solid #2ecc71;
+  border-radius: 12px;
+  background-color: #44b635;
+  padding: 12px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
